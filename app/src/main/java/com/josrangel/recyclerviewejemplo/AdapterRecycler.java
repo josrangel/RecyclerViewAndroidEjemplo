@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.josrangel.recyclerviewejemplo.entity.User;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -16,10 +18,10 @@ import java.util.ArrayList;
 public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.RecViewHolder> {
 
     Context context;
-    String[] titulos;
+    User[] titulos;
 
 
-    AdapterRecycler(Context context, String [] titulos){
+    AdapterRecycler(Context context, User [] titulos){
         this.context = context;
         this.titulos = titulos;
     }
@@ -33,7 +35,8 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.RecVie
 
     @Override
     public void onBindViewHolder(RecViewHolder holder, int position) {
-        String texto = titulos[position];
+        User user = titulos[position];
+        String texto = user.getId() + "|" + user.getUsername() + "|" + user.getEmail() + "|";
         TextView textView = holder.itemView.findViewById(R.id.textView);
         textView.setText(texto);
     }
